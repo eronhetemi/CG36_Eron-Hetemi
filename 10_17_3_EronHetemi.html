@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+// Translate the origin to the center of the canvas (100, 50)
+ctx.translate(100, 50);
+
+// Draw the X axis
+ctx.beginPath();
+ctx.moveTo(-100, 0); // Start from the left side of the canvas
+ctx.lineTo(100, 0);  // End at the right side of the canvas
+ctx.stroke();
+
+// Draw the Y axis
+ctx.beginPath();
+ctx.moveTo(0, -50);  // Start from the top side of the canvas
+ctx.lineTo(0, 50);   // End at the bottom side of the canvas
+ctx.stroke();
+
+// Label the X axis with -20 and 20
+ctx.font = "10px Arial";
+ctx.fillText("-20", -95, 10); // Left side of the X axis
+ctx.fillText("20", 85, 10);   // Right side of the X axis
+
+// Label the Y axis with -20 and 20, adjust positions
+ctx.fillText("20", 10, -40);   // Top of the Y axis (move it down slightly)
+ctx.fillText("-20", 10, 40);   // Bottom of the Y axis (move it up slightly)
+
+// Add 'X' label at the end of the X axis
+ctx.fillText("X", 85, -5);
+
+// Add 'Y' label at the end of the Y axis
+ctx.fillText("Y", -10, -40);  // Move Y label a bit down to make it visible
+
+// Define the initial vector Vi = [1, 1]
+var Vi = [1, 1];
+
+// Scale factor for the two new vectors
+var scale1 = 3;
+var scale2 = 5;
+
+// Draw vector V1 = 3Vi
+ctx.beginPath();
+ctx.moveTo(0, 0);             // Start at origin
+ctx.lineTo(Vi[0] * scale1 * 5, -Vi[1] * scale1 * 5); // Multiply and scale the vector for visibility
+ctx.strokeStyle = "blue";
+ctx.lineWidth = 2;
+ctx.stroke();
+
+// Draw an arrow for V1
+ctx.beginPath();
+ctx.moveTo(Vi[0] * scale1 * 5, -Vi[1] * scale1 * 5);  // End of the vector V1
+ctx.lineTo(Vi[0] * scale1 * 5 - 3, -Vi[1] * scale1 * 5 + 3); // Left arrow
+ctx.lineTo(Vi[0] * scale1 * 5 + 3, -Vi[1] * scale1 * 5 + 3); // Right arrow
+ctx.closePath();
+ctx.fillStyle = "blue";
+ctx.fill();
+
+// Draw vector V2 = 5Vi
+ctx.beginPath();
+ctx.moveTo(0, 0);             // Start at origin
+ctx.lineTo(Vi[0] * scale2 * 5, -Vi[1] * scale2 * 5); // Multiply and scale the vector for visibility
+ctx.strokeStyle = "green";
+ctx.lineWidth = 2;
+ctx.stroke();
+
+// Draw an arrow for V2
+ctx.beginPath();
+ctx.moveTo(Vi[0] * scale2 * 5, -Vi[1] * scale2 * 5);  // End of the vector V2
+ctx.lineTo(Vi[0] * scale2 * 5 - 3, -Vi[1] * scale2 * 5 + 3); // Left arrow
+ctx.lineTo(Vi[0] * scale2 * 5 + 3, -Vi[1] * scale2 * 5 + 3); // Right arrow
+ctx.closePath();
+ctx.fillStyle = "green";
+ctx.fill();
+
+</script>
+
+</body>
+</html>
